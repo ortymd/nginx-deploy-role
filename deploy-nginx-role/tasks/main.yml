@@ -3,9 +3,29 @@
   apt:
     name: nginx-light
     state: present
+
 - name: "copy nginx config files to remote host"
   vars:
     conf: nginx-static-html.conf
   copy:
     src: "{{role_path}}/files/{{conf}}"
     dest: "/etc/nginx/conf.d/{{conf}}"
+
+- name: "copy ssl public cert to /etc/ssl/certs/"
+  vars:
+    public_cert: nginx-ssl-public.pem
+  copy:
+    src: "{{role_path}}/files/{{public_cert}}"
+    dest: "/etc/ssl/certs/"
+
+- name: "copy ssl private key to public cert to /etc/ssl/certs/"
+  vars:
+    private_key_to_public_cert: nginx-ssl-private.key
+  copy:
+    src: "{{role_path}}/files/{{private_key_to_public_cert}}"
+    dest: "/etc/ssl/certs/"
+
+- name: "restart nginx to read updated configuration"
+  service:
+    name: nginx
+    state: restarted
