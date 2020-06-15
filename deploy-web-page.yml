@@ -1,0 +1,8 @@
+---
+- name: 'deploy webpage to webserver'
+  hosts: all
+  tasks:
+    - name: 'copy files'
+      copy:
+        src: webpage/index.html
+        dest: /var/www/html/
