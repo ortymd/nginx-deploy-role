@@ -1,0 +1,12 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  tasks:
+  - name: 'get nginx status'
+    command: ps -C nginx
+    register: status
+  - name: 'check nginx status'
+    assert:
+      that: "'nginx' in status.stdout"
