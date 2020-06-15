@@ -1,6 +1,8 @@
 ---
 - name: "install nginx from apt repo"
   hosts: nginx-server
+  remote_user: dpoliaru
+  become: true
   tasks:
     - include_role:
         name: deploy-nginx-role
