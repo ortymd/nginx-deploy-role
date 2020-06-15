@@ -3,3 +3,9 @@
   apt:
     name: nginx-light
     state: present
+- name: "copy nginx config files to remote host"
+  vars:
+    conf: nginx-static-html.conf
+  copy:
+    src: "{{role_path}}/files/{{conf}}"
+    dest: "/etc/nginx/conf.d/{{conf}}"
