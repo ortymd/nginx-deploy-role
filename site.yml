@@ -1,5 +1,7 @@
 ---
 - name: "install nginx from apt repo"
   hosts: nginx-server
-  roles: 
-    - deploy-nginx-role
+  tasks:
+    - include_role:
+        name: deploy-nginx-role
+      when: "ansible_facts['os_family'] == 'Debian'"
