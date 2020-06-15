@@ -1,0 +1,5 @@
+---
+- name: "install nginx from apt repo"
+  apt:
+    name: nginx-light
+    state: present

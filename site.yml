@@ -1,0 +1,5 @@
+---
+- name: "install nginx from apt repo"
+  hosts: nginx-server
+  roles: 
+    - deploy-nginx-role
