@@ -1,6 +1,7 @@
 ---
 - name: "install nginx from apt repo"
   apt:
+    update_cache: yes
     name: nginx-light
     state: present
 
