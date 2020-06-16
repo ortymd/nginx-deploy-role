@@ -1,0 +1,26 @@
+This is a simple deployment of nginx-light to a Debian family server.
+Deployment is done with ansible role: 'deploy-nginx-role'
+
+.
+├── deploy-nginx-role <-------------------- ansible role root dir
+│   ├── files  <--------------------------- these files are copied to webserver upon role execution
+│   │   ├── nginx-ssl-private.key <--- for https://
+│   │   ├── nginx-ssl-public.pem
+│   │   └── nginx-static-html.conf  <---- nginx custom config
+│   ├── molecule <----- molecule contains only default test for idempotence
+│   │   └── default <-------- default scenario
+│   │       ├── converge.yml
+│   │       ├── INSTALL.rst
+│   │       ├── molecule.yml
+│   │       └── verify.yml <------------ 'molecule verify' checks if nginx is up with 'ps'
+│   └── tasks
+│       └── main.yml
+├── deploy-web-page.yml <---------- for easy webpage deployment
+├── inventory
+├── README
+├── site.yml
+└── webpage   <-------- this is the content that gets deployed with deploy-web-page.yml playbook
+    ├── index.html
+    └── style.css
+
+6 directories, 14 files
